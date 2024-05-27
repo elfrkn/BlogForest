@@ -15,5 +15,12 @@ namespace BlogForest.DataAccessLayer.EntityFramework
         public EfAppUserDal(BlogContext context) : base(context)
         {
         }
+
+        public AppUser GetAppUserDetail(int id)
+        {
+            var context = new BlogContext();
+            var value = context.Blogs.Where(x => x.BlogId == id).Select(y => y.AppUser).FirstOrDefault();
+            return value;
+        }
     }
 }

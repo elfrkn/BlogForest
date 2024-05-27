@@ -1,5 +1,6 @@
 ﻿using BlogForest.BusinessLayer.Abstract;
 using BlogForest.DataAccessLayer.Abstract;
+using BlogForest.DtoLayer.CategoryDtos;
 using BlogForest.EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
@@ -9,13 +10,13 @@ using System.Threading.Tasks;
 
 namespace BlogForest.BusinessLayer.Concrete
 {
-    public class AppUserManager : IAppUserService
+    public class CategoryManager : ICategoryService
     {
-        private readonly IAppUserDal _userDal;
+        private readonly ICategoryDal _categoryDal;
 
-        public AppUserManager(IAppUserDal userDal)
+        public CategoryManager(ICategoryDal categoryDal)
         {
-            _userDal = userDal;
+            _categoryDal = categoryDal;
         }
 
         public void TDelete(int id)
@@ -23,27 +24,27 @@ namespace BlogForest.BusinessLayer.Concrete
             throw new NotImplementedException();
         }
 
-        public AppUser TGetAppUserDetail(int id)
-        {
-            return _userDal.GetAppUserDetail(id);
-        }
-
-        public AppUser TGetById(int id)
+        public Category TGetById(int id)
         {
             throw new NotImplementedException();
         }
 
-        public List<AppUser> TGetListAll()
+        public List<ResultCategoryWithCountDto> TGetCategoryWithCount()
+        {
+            return _categoryDal.GetCategoryWithCount();
+        }
+
+        public List<Category> TGetListAll()
         {
             throw new NotImplementedException();
         }
 
-        public void TInsert(AppUser entity)
+        public void TInsert(Category entity)
         {
             throw new NotImplementedException();
         }
 
-        public void TUpdate(AppUser entity)
+        public void TUpdate(Category entity)
         {
             throw new NotImplementedException();
         }
